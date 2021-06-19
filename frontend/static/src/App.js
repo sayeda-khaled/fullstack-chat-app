@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 
   addMessage(event) {
-    event.preventDefault();
+    
     const message = {
       text: this.state.text,
     };
@@ -48,10 +48,12 @@ class App extends React.Component {
     ))
     return(
       <>
+        <section className="main">
         <form onSubmit={this.addMessage}>
-          <input type="text" name="text" value={this.state.text} onChange={this.handleInput}/>
-          <button type="submit">Send Message</button>
+          <input  className="text" type="text" name="text" value={this.state.text} onChange={this.handleInput}/>
+          <button className="button" type="submit">Send Message</button>
         </form>
+        </section>
         <ul>{messages}</ul>
       </>
     )
