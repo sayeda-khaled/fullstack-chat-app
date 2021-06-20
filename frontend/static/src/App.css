@@ -1,24 +1,27 @@
 .button{
   color:  red;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   margin-top: 20px;
-  display: flex;
-  margin-left: 90px;
+  border: 1px solid blue;
+  border-radius: 5px;
+
 }
 
-.main {
-  display: flex;
-  max-width: 1200px;
-  margin: auto;
-}
 
 .text {
-  height: 100px;
-  width: 300px;
-  margin-top: 30px;
+  height: 30px;
+  width: 500px;
+  margin-top: 40px;
+  margin-left: 10px;
+  border: 1px solid blue;
+  border-radius: 5px;
 }
 
 body {
   background-color: #EDDAD7;
 }
+
+/* .main{
+  border: 1px solid blue;
+} */

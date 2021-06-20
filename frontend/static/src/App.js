@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 
   addMessage(event) {
-    
+
     const message = {
       text: this.state.text,
     };
