@@ -11,3 +11,6 @@ from .serializers import ChatSerializer
 class ChatListAPIView(generics.ListCreateAPIView):
     queryset = Chat.objects.all()
     serializer_class = ChatSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user) #when a new form is created, the author is going to be the logged in user..

@@ -1,4 +1,6 @@
 import React from 'react';
+import Registration from './components/Registration.js';
+import Login from './components/Login.js';
 import Cookies from 'js-cookie';
 import './App.css';
 
@@ -20,10 +22,10 @@ class App extends React.Component {
   }
   handleInput(event) {
     this.setState({[event.target.name]: event.target.value});
+
   }
 
   addMessage(event) {
-
     const message = {
       text: this.state.text,
     };
@@ -32,12 +34,13 @@ class App extends React.Component {
         headers: {
           'Content-Type': 'application/json',
           'X-CSRFToken': Cookies.get('csrftoken'),
-    },
+        },
     body: JSON.stringify(message),
-    }
+      }
     fetch('/api/v1/chats/', options)
       .then(response => response.json())
       .then(data => this.setState(data));
+
     }
 
   render() {
@@ -48,6 +51,8 @@ class App extends React.Component {
     ))
     return(
       <>
+        <Registration />
+        <Login />
         <section className="main">
         <form onSubmit={this.addMessage}>
           <input  className="text" type="text" name="text" value={this.state.text} onChange={this.handleInput}/>
