@@ -11,39 +11,20 @@ class Registration extends Component {
     password2: '',
 
   }
-    this.handleRegistration = this.handleRegistration.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
   }
 
   handleInput(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
-  async handleRegistration(e) {
-    e.preventDefault();
-    const user = {
-      username: this.state.Username,
-      email: this.state.Email,
-      password1: this.state.password1,
-      password2: this.state.password2,
-    }
-    console.log(user)
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': Cookies.get('csrftoken'),
-      },
-      body: JSON.stringify(user),
-    };
-    const handleError = (error) => console.warn(error);
-    const response = await fetch('/rest-auth/registration/', options).catch(handleError);
-    const data = await response.json().catch(handleError);
 
-    if(data.key) {
-      Cookies.set('Authorization', `Token ${data.key}`);
-    }
-    // console.log(data);
-  }
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.handleRegistration(this.state)
+}
+
+
   render() {
     return (
       <form onSubmit={this.handleRegistration}>
