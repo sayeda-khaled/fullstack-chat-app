@@ -10,6 +10,8 @@ class ChatList extends Component {
     }
     this.addMessage = this.addMessage.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.deleteMessage = this.deleteMessage.bind(this);
+    this.editMeaage = this.editMeaage.bind(this);
   }
 
   componentDidMount() {
@@ -20,6 +22,50 @@ class ChatList extends Component {
   handleInput(event) {
     this.setState({[event.target.name]: event.target.value});
   }
+
+  deleteMessage(id) {
+    const options= {
+      method: 'DELETE',
+    }
+    fetch(`/api/v1/chats'/${id}/`, options)
+      .then(response => {
+      const messages = [...this.state.messages];
+      const index = messages.findIndex(message => message.id === id);
+      messages.splice(index, 1);
+      this.setState({ messages });
+
+      })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+
+
+  editMeaage(id, text) {
+    const message = {
+      text: this.state.text,
+    };
+
+  const options = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken'),
+      },
+      body: JSON.stringify(message),
+    }
+    fetch(`/api/v1/chats'/${id}/`, options)
+        .then(response => {
+          const messages = [...this.state.messages];
+          const index = messages.findIndex(message => message.id === id);
+          messages[index].text = text;
+          this.setState({ messages });
+        });
+    }
+
+
+
+
 
   addMessage(event) {
     const message = {
@@ -48,7 +94,8 @@ class ChatList extends Component {
         <li key={message.id}>
           <p>{message.author}</p>
           <p>{message.text}</p>
-
+          <button type ='button' onClick={() => this.deleteMessage(message.id)}>delete</button>
+          <button type ='button' onClick={() => this.editMeaage(message.id)}>edit</button>
         </li>
       ));
       return(
