@@ -41,7 +41,11 @@ class App extends React.Component {
       }
     fetch('/api/v1/chats/', options)
       .then(response => response.json())
-      .then(data => this.setState(data));
+      .then(data => {
+        const messages = [...this.state.messgaes];
+        messages.push(data);
+        this.setState({messages});
+      });
 
     }
 
