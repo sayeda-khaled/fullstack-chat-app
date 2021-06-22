@@ -5,8 +5,8 @@ class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    Username: '',
-    Email: '',
+    username: '',
+    email: '',
     password1: '',
     password2: '',
 
@@ -28,10 +28,10 @@ class Registration extends Component {
   render() {
     return (
       <form onSubmit={this.handleRegistration}>
-        <input type="text" name="Username" onChange={this.handleInput} value={this.state.Username}/>
-        <input type="email" name="Email" onChange ={this.handleInput} value={this.state.Email}/>
-        <input type="password1" name="password1" onChange={this.handleInput} value={this.state.password1}/>
-        <input type="password2" name="password2" onChange={this.handleInput} value={this.state.password2}/>
+        <input type="text" name="username" onChange={this.handleInput} value={this.state.username} required />
+        <input type="email" name="email" pattern=".+@globex\.com" size="30" required onChange ={this.handleInput} value={this.state.email}/>
+        <input type="password" name="password1" required onChange={this.handleInput} value={this.state.password1}/>
+        <input type="password" name="password2" required onChange={this.handleInput} value={this.state.password2}/>
         <button type="submit">Register</button>
       </form>
     );

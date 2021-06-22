@@ -27,9 +27,9 @@ class Login extends Component {
   render() {
     return (
       <form onSubmit={this.handleRegistration}>
-        <input type="text" name="Username" onChange={this.handleInput} value={this.state.Username}/>
-        <input type="email" name="Email" onChange ={this.handleInput} value={this.state.Email}/>
-        <input type="password1" name="password1" onChange={this.handleInput} value={this.state.password1}/>
+        <input type="text" name="username" onChange={this.handleInput} value={this.state.Username}/>
+        <input type="email" name="email" pattern=".+@globex\.com" size="30" required onChange ={this.handleInput} value={this.state.Email}/>
+        <input type="password" name="password" onChange={this.handleInput} value={this.state.password1}/>
         <button type="submit">Login</button>
       </form>
     );
