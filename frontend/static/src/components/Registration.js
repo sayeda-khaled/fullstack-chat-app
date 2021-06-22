@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 
 class Registration extends Component {
   constructor(props) {
@@ -27,9 +27,9 @@ class Registration extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleRegistration}>
+      <form onSubmit={this.handleSubmit}>
         <input type="text" name="username" onChange={this.handleInput} value={this.state.username} required />
-        <input type="email" name="email" pattern=".+@globex\.com" size="30" required onChange ={this.handleInput} value={this.state.email}/>
+        <input type="email" name="email" required onChange ={this.handleInput} value={this.state.email}/>
         <input type="password" name="password1" required onChange={this.handleInput} value={this.state.password1}/>
         <input type="password" name="password2" required onChange={this.handleInput} value={this.state.password2}/>
         <button type="submit">Register</button>

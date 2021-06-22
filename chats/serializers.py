@@ -4,7 +4,9 @@ from .models import Chat
 
 
 class ChatSerializer(serializers.ModelSerializer):
+
+    author= serializers.StringRelatedField()
+
     class Meta:
         model = Chat
-
-        fields = '__all__'
+        fields = ('text', 'author')

@@ -20,6 +20,7 @@ class App extends React.Component {
 
 
     async handleLogin(user) {
+      console.log(user)
       const options = {
         method: 'POST',
         headers: {
@@ -31,7 +32,6 @@ class App extends React.Component {
       const handleError = (error) => console.warn(error);
       const response = await fetch('/rest-auth/login/', options).catch(handleError);
 
-
       if(response.ok) {
         const data = await response.json().catch(handleError);
         Cookies.set('Authorization', `Token ${data.key}`);
@@ -40,7 +40,7 @@ class App extends React.Component {
     }
       // console.log(data);
     async handleRegistration(user) {
-      console.log(user)
+
       const options = {
         method: 'POST',
         headers: {
@@ -87,10 +87,11 @@ class App extends React.Component {
 
     return(
       <>
-        <Navbar handleLogout={this.handleLogout} handleSelection={this.handleSelection} />
+
+        <Navbar handleLogout={this.handleLogout} isAuth={this.state.selection === 'chats'} handleSelection={this.handleSelection} />
         {this.state.selection === 'chats' && <ChatList />}
-        {this.state.selection === 'registration' && <Registration handleRegistration={this.handleRegistration} />}
-        {this.state.selection === 'login' && <Login handleLogin={this.handleLogin} /> }
+        {this.state.selection === 'registration' && <Registration handleRegistration={this.handleRegistration} handleSelection={this.handleSelection}/>}
+        {this.state.selection === 'login' && <Login handleLogin={this.handleLogin} handleSelection={this.handleSelection}/> }
       </>
     )
   }

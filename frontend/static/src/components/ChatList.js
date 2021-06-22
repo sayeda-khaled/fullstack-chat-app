@@ -12,7 +12,7 @@ class ChatList extends Component {
     this.handleInput = this.handleInput.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     fetch('/api/v1/chats/')
     .then(response => response.json())
     .then(data => this.setState({ messages: data }));
@@ -32,7 +32,7 @@ class ChatList extends Component {
           'X-CSRFToken': Cookies.get('csrftoken'),
         },
     body: JSON.stringify(message),
-      }
+    }
     fetch('/api/v1/chats/', options)
       .then(response => response.json())
       .then(data => {
@@ -46,27 +46,23 @@ class ChatList extends Component {
     render() {
       const messages= this.state.messages.map(message => (
         <li key={message.id}>
+          <p>{message.author}</p>
           <p>{message.text}</p>
+
         </li>
       ));
       return(
         <>
-          <section className="main">
-          <form onSubmit={this.addMessage}>
-            <input  className="text" type="text" name="text" value={this.state.text} onChange={this.handleInput}/>
-            <button className="button" type="submit">Send Message</button>
-          </form>
-          </section>
           <ul>{messages}</ul>
+          <section className="main">
+            <form onSubmit={this.addMessage}>
+              <input  className="text" type="text" name="text" value={this.state.text} onChange={this.handleInput}/>
+              <button className="button" type="submit">Send Message</button>
+            </form>
+          </section>
         </>
       )
     }
-
-
-
-
-
-
 }
 
 export default ChatList;
