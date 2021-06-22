@@ -45,14 +45,14 @@ class App extends React.Component {
 
     }
 
-    async handleLogin(e) {
-      e.preventDefault();
-      const user = {
-        Username: this.state.Username,
-        Email: this.state.Email,
-        password: this.state.password,
-
-      }
+    async handleLogin(user) {
+      // e.preventDefault();
+      // const user = {
+      //   Username: this.state.Username,
+      //   Email: this.state.Email,
+      //   password: this.state.password,
+      //
+      // }
       const options = {
         method: 'POST',
         headers: {
@@ -73,7 +73,7 @@ class App extends React.Component {
 
     async handleRegistration(user) {
       // e.preventDefault();
-    
+
       console.log(user)
       const options = {
         method: 'POST',
