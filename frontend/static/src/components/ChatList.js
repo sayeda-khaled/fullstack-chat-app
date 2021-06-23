@@ -26,8 +26,12 @@ class ChatList extends Component {
   deleteMessage(id) {
     const options= {
       method: 'DELETE',
-    }
-    fetch(`/api/v1/chats'/${id}/`, options)
+      headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': Cookies.get('csrftoken'),
+    },
+  }
+    fetch(`/api/v1/chats/${id}/`, options)
       .then(response => {
       const messages = [...this.state.messages];
       const index = messages.findIndex(message => message.id === id);
@@ -46,15 +50,15 @@ class ChatList extends Component {
       text: this.state.text,
     };
 
-  const options = {
-      method: 'PUT',
+    const options = {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': Cookies.get('csrftoken'),
       },
       body: JSON.stringify(message),
     }
-    fetch(`/api/v1/chats'/${id}/`, options)
+    fetch(`/api/v1/chats/${id}/`, options)
         .then(response => {
           const messages = [...this.state.messages];
           const index = messages.findIndex(message => message.id === id);
@@ -63,26 +67,23 @@ class ChatList extends Component {
         });
     }
 
-
-
-
-
   addMessage(event) {
+    event.preventDefault();
     const message = {
       text: this.state.text,
     };
     const options = {
       method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': Cookies.get('csrftoken'),
-        },
-    body: JSON.stringify(message),
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken'),
+      },
+      body: JSON.stringify(message),
     }
     fetch('/api/v1/chats/', options)
       .then(response => response.json())
       .then(data => {
-        const messages = [...this.state.messgaes];
+        const messages = [...this.state.messages];
         messages.push(data);
         this.setState({messages});
       });

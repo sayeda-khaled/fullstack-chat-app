@@ -9,4 +9,6 @@ class ChatSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Chat
-        fields = ('text', 'author')
+        # fields = ('text', 'author', 'id')
+
+        fields = '__all__'
