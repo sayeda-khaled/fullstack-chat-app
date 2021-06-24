@@ -66,6 +66,9 @@ class ChatList extends Component {
     }
     fetch(`/api/v1/chats/${id}/`, options)
         .then(response => {
+          // if (!response.ok) {
+          //   throw new Error('Network response was not ok');
+          // }
           const messages = [...this.state.messages];
           const index = messages.findIndex(message => message.id === id);
           messages[index].text = text;
