@@ -87,11 +87,12 @@ class App extends React.Component {
 
     return(
       <>
-
+        <section className="main">
         <Navbar handleLogout={this.handleLogout} isAuth={this.state.selection === 'chats'} handleSelection={this.handleSelection} />
         {this.state.selection === 'chats' && <ChatList />}
         {this.state.selection === 'registration' && <Registration handleRegistration={this.handleRegistration} handleSelection={this.handleSelection}/>}
         {this.state.selection === 'login' && <Login handleLogin={this.handleLogin} handleSelection={this.handleSelection}/> }
+        </section>
       </>
     )
   }

@@ -23,6 +23,11 @@ class ChatDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Chat.objects.all()
     serializer_class = ChatSerializer
 
-    # permission_classes = (IsAuthOrReadOnly,)
+    permission_classes = (IsAuthOrReadOnly,)
+
+
+
+
+
 
 # class MessageDetailAPIView(generics.RetrieveupdateDestroyAPIView);

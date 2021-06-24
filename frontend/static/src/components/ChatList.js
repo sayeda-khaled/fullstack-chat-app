@@ -36,10 +36,13 @@ class ChatList extends Component {
     }
     fetch(`/api/v1/chats/${id}/`, options)
       .then(response => {
-      const messages = [...this.state.messages];
-      const index = messages.findIndex(message => message.id === id);
-      messages.splice(index, 1);
-      this.setState({ messages });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const messages = [...this.state.messages];
+        const index = messages.findIndex(message => message.id === id);
+        messages.splice(index, 1);
+        this.setState({ messages });
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -103,7 +106,7 @@ class ChatList extends Component {
         <>
           <ul>{messages}</ul>
 
-          <section className="main">
+          <section className="submit">
             <form onSubmit={this.addMessage}>
               <input  className="text" type="text" name="text" value={this.state.text} onChange={this.handleInput}/>
               <button className="button" type="submit">Send Message</button>

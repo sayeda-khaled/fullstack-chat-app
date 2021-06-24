@@ -22,6 +22,11 @@ body {
   background-color: #EDDAD7;
 }
 
-/* .main{
+.main{
   border: 1px solid blue;
-} */
+  max-width: 800px;
+  margin-left: 10%;
+  padding-left: 1%;
+  padding-right: 10%
+  /* background-image: url(https://cdn2.iconfinder.com/data/icons/zohanimasi-bundle-2/512/ICQ-512.png); */
+}
