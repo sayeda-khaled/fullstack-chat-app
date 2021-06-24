@@ -1,17 +1,20 @@
 import { Component } from 'react';
 import Cookies from 'js-cookie';
 
+import MessageDetail from './MessageDetail.js';
+
 class ChatList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       messages: [],
       text: '',
+
     }
     this.addMessage = this.addMessage.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.deleteMessage = this.deleteMessage.bind(this);
-    this.editMeaage = this.editMeaage.bind(this);
+    this.editMessage = this.editMessage.bind(this);
   }
 
   componentDidMount() {
@@ -29,29 +32,29 @@ class ChatList extends Component {
       headers: {
       'Content-Type': 'application/json',
       'X-CSRFToken': Cookies.get('csrftoken'),
-    },
-  }
+      },
+    }
     fetch(`/api/v1/chats/${id}/`, options)
       .then(response => {
       const messages = [...this.state.messages];
       const index = messages.findIndex(message => message.id === id);
       messages.splice(index, 1);
       this.setState({ messages });
-
       })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 
 
-  editMeaage(id, text) {
+  editMessage(id, text) {
+
     const message = {
-      text: this.state.text,
+      text,
     };
 
     const options = {
-      method: 'PATCH',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': Cookies.get('csrftoken'),
@@ -68,6 +71,7 @@ class ChatList extends Component {
     }
 
   addMessage(event) {
+
     event.preventDefault();
     const message = {
       text: this.state.text,
@@ -87,21 +91,18 @@ class ChatList extends Component {
         messages.push(data);
         this.setState({messages});
       });
-
     }
 
-    render() {
-      const messages= this.state.messages.map(message => (
-        <li key={message.id}>
-          <p>{message.author}</p>
-          <p>{message.text}</p>
-          <button type ='button' onClick={() => this.deleteMessage(message.id)}>delete</button>
-          <button type ='button' onClick={() => this.editMeaage(message.id)}>edit</button>
-        </li>
+  render() {
+
+      const messages = this.state.messages.map(message => (
+        <MessageDetail key={message.id} message={message} deleteMessage={this.deleteMessage} editMessage={this.editMessage}/>
       ));
+
       return(
         <>
           <ul>{messages}</ul>
+
           <section className="main">
             <form onSubmit={this.addMessage}>
               <input  className="text" type="text" name="text" value={this.state.text} onChange={this.handleInput}/>
