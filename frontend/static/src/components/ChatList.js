@@ -8,7 +8,6 @@ class ChatList extends Component {
     super(props);
     this.state = {
       messages: [],
-
     }
     this.addMessage = this.addMessage.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -21,8 +20,15 @@ class ChatList extends Component {
     .then(response => response.json())
     // .then(data => console.log(data));
     .then(data => this.setState({ messages: data }));
+    this.timer = setInterval(() => {
+  },30000)
+}
 
-  }
+componentWillUnmount() {
+   clearInterval(this.timer);
+}
+
+  
   handleInput(event) {
     this.setState({[event.target.name]: event.target.value});
   }

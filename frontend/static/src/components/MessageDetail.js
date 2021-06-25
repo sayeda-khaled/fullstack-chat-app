@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import Moment from 'react-moment';
+
 
 class MessageDetail extends Component {
 
@@ -28,7 +30,9 @@ class MessageDetail extends Component {
     const message = this.props.message;
     return (
       <li>
+
         <p>{message.author}</p>
+
 
         {
           this.state.isEditing
@@ -43,7 +47,7 @@ class MessageDetail extends Component {
           ? <button type ='button' onClick={this.saveMessage}>save</button>
           : message.is_owner && <button type ='button' onClick={() => this.setState({isEditing: true})}>edit</button>
         }
-
+         <Moment format="hh:mm:ss">{message.time}</Moment>
       </li>
     );
   }
