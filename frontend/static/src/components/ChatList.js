@@ -8,27 +8,31 @@ class ChatList extends Component {
     super(props);
     this.state = {
       messages: [],
+      time: Date.now(),
     }
     this.addMessage = this.addMessage.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.deleteMessage = this.deleteMessage.bind(this);
     this.editMessage = this.editMessage.bind(this);
+    this.fetchMessages = this.fetchMessages.bind(this);
   }
 
   componentDidMount() {
-    fetch('/api/v1/chats/')
-    .then(response => response.json())
-    // .then(data => console.log(data));
-    .then(data => this.setState({ messages: data }));
-    this.timer = setInterval(() => {
-  },30000)
+  this.displayMessages = setInterval(this.fetchMessages,
+  1000
+);
 }
 
 componentWillUnmount() {
-   clearInterval(this.timer);
+   clearInterval(this.displayMessages);
 }
 
-  
+  fetchMessages(){
+    fetch('/api/v1/chats/')
+    .then(response => response.json())
+    .then(data => this.setState({ messages: data }));
+  }
+
   handleInput(event) {
     this.setState({[event.target.name]: event.target.value});
   }
