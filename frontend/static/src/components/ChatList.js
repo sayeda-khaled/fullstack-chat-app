@@ -8,7 +8,7 @@ class ChatList extends Component {
     super(props);
     this.state = {
       messages: [],
-      time: Date.now(),
+
     }
     this.addMessage = this.addMessage.bind(this);
     this.handleInput = this.handleInput.bind(this);
