@@ -8,7 +8,6 @@ class ChatList extends Component {
     super(props);
     this.state = {
       messages: [],
-      text: '',
 
     }
     this.addMessage = this.addMessage.bind(this);
@@ -20,7 +19,9 @@ class ChatList extends Component {
   componentDidMount() {
     fetch('/api/v1/chats/')
     .then(response => response.json())
+    // .then(data => console.log(data));
     .then(data => this.setState({ messages: data }));
+
   }
   handleInput(event) {
     this.setState({[event.target.name]: event.target.value});
@@ -66,9 +67,9 @@ class ChatList extends Component {
     }
     fetch(`/api/v1/chats/${id}/`, options)
         .then(response => {
-          // if (!response.ok) {
-          //   throw new Error('Network response was not ok');
-          // }
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
           const messages = [...this.state.messages];
           const index = messages.findIndex(message => message.id === id);
           messages[index].text = text;
@@ -102,7 +103,7 @@ class ChatList extends Component {
   render() {
 
       const messages = this.state.messages.map(message => (
-        <MessageDetail key={message.id} message={message} deleteMessage={this.deleteMessage} editMessage={this.editMessage}/>
+        <MessageDetail key={message.id} message={message} deleteMessage={this.deleteMessage} editMessage={this.editMessage} owner={this.state.is_owner}/>
       ));
 
       return(

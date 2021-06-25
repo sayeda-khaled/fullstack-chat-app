@@ -1,7 +1,5 @@
 import { Component } from 'react';
 
-// import ChatList from './src/components/ChatList.js';
-
 class MessageDetail extends Component {
 
   constructor(props) {
@@ -10,6 +8,7 @@ class MessageDetail extends Component {
     this.state = {
       isEditing: false,
       text: this.props.message.text,
+
     }
     this.handleInput = this.handleInput.bind(this);
     this.saveMessage = this.saveMessage.bind(this);
@@ -36,13 +35,15 @@ class MessageDetail extends Component {
           ? <input type="text" value={this.state.text} onChange={this.handleInput} name="text"/>
           : <p>{message.text}</p>
         }
-
-        <button type ='button' onClick={() => this.props.deleteMessage(message.id)}>delete</button>
+        {
+          message.is_owner && <button type ='button' onClick={() => this.props.deleteMessage(message.id)}>delete</button>
+        }
         {
           this.state.isEditing
           ? <button type ='button' onClick={this.saveMessage}>save</button>
-          : <button type ='button' onClick={() => this.setState({isEditing: true})}>edit</button>
+          : message.is_owner && <button type ='button' onClick={() => this.setState({isEditing: true})}>edit</button>
         }
+
       </li>
     );
   }
