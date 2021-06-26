@@ -1,5 +1,5 @@
 .button{
-  color:  red;
+  color: red;
   padding-top: 3px;
   padding-bottom: 3px;
   border: 4px solid #56CFE1;
@@ -18,7 +18,7 @@
 }
 
 body {
-  background-color: white;
+  background-color: rgba(234, 246, 250, 0.9);
 }
 
 .main{
@@ -42,7 +42,7 @@ body {
 .offset {
     border-color: #3498db;
     color: #fff;
-    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+    /* box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db; /*button background color */
     transition: all 150ms ease-in-out;
 }
 .btn {
@@ -72,13 +72,13 @@ body {
 .message:nth-child(even) {
   background-color: rgba(224, 224, 224, 0.86);
   padding: 2%;
-  border-radius: 10px;
+  border-radius: 20px 20px 3px 20px;
 }
 
 .message:nth-child(odd) {
   background-color: #00B4D8;
   padding: 2%;
-  border-radius: 10px;
+  border-radius: 20px 20px 3px 20px;
 }
 
 li{
