@@ -1,4 +1,4 @@
-.button{
+.sendButton{
   color: red;
   padding-top: 3px;
   padding-bottom: 3px;
@@ -6,7 +6,6 @@
   border-radius: 5px;
 
 }
-
 
 .text {
   height: 30px;
@@ -23,12 +22,11 @@ body {
 
 .main{
   border: 4px solid #56CFE1;
-  border-radius: 5px;
+  border-radius: 10px;
   max-width: 800px;
   margin: auto;
-  margin-top: 20vh;
+  margin-top: 10vh;
   padding: 2%;
-  /* background-color: rgba(184, 133, 122, 0.23); */
   background-image: url(https://www.bypeople.com/wp-content/uploads/2014/05/light-live-background-css.jpg);
 }
 
@@ -42,7 +40,7 @@ body {
 .offset {
     border-color: #3498db;
     color: #fff;
-    /* box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db; /*button background color */
+    /* box-shadow: 0 0 40px 40px  #00B4D8 inset, 0 0 0 0  #00B4D8; */
     transition: all 150ms ease-in-out;
 }
 .btn {
@@ -51,9 +49,9 @@ body {
     -moz-appearance: none;
     appearance: none;
     background-color: transparent;
-    border: 2px solid #e74c3c;
+    border: 2px solid #293c48;
     border-radius: 0.6em;
-    color: #e74c3c;
+    color: #0a6f80;
     cursor: pointer;
 
     align-self: center;
@@ -95,6 +93,7 @@ ul{
   color: rgba(59, 69, 74, 1);
   opacity: 100px;
 
+
 }
 
 .time time{
@@ -105,43 +104,15 @@ ul{
 }
 
 .messageText{
-  padding: 12px;
+  padding: 1px;
   font-size: 18px;
 }
 
-.settingButtons:hover {
-    box-shadow: 0 0 10px 0 #4F6273 inset, 0 0 10px 4px #4F6273;
-}
-.btn:hover, .btn:focus {
-    color: ##3498db;
-    outline: 0;
-}
 .settingButtons {
-    border-color: ##3498db;
-    color: ##3498db;
-    box-shadow: 0 0 40px 40px ##4F6273 inset, 0 0 0 0 #4F6273;
-    transition: all 150ms ease-in-out;
+  border-radius: 20px;
 }
-.btn {
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    border: 2px solid #e74c3c;
-    border-radius: 0.6em;
-    color: #e74c3c;
-    cursor: pointer;
 
-    align-self: center;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1;
-    margin: 20px;
-    /* padding: 1.2em 2.8em; */
-    text-decoration: none;
-    text-align: center;
-    text-transform: uppercase;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
+.settingButtons:hover {
+  background-color: #4CAF50;
+  color: white;
 }

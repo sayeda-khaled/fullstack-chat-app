@@ -121,12 +121,12 @@ class ChatList extends Component {
 
       return(
         <>
-          <button type="submit" class="btn btn-primary" onClick={() => this.props.handleLogout()}>Logout</button>
+          <button type="submit" class="btn btn-primary offset" onClick={() => this.props.handleLogout()}>Logout</button>
           <ul>{messages}</ul>
           <section className="submit">
             <form onSubmit={this.addMessage}>
               <input  autoComplete="off" className="text" type="text" name="text" value={this.state.text} onChange={this.handleInput}/>
-              <button className="button" type="submit">Send Message</button>
+              <button className="sendButton" type="submit">Send Message</button>
             </form>
           </section>
         </>
