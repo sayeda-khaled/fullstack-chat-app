@@ -1,48 +1,52 @@
-.sendButton{
-  color: red;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border: 4px solid #56CFE1;
-  border-radius: 5px;
 
-}
+.sendButton{
+  cursor: pointer;
+  border: 4px solid #56CFE1;
+  display: inline-block;
+  background-color: rgba(224, 224, 224, 0.86);
+  padding: 3px;
+  border-radius: 50px;
+  margin-left: -20px;
+  }
+
 
 .text {
-  height: 30px;
-  width: 80%;
+  height: 35px;
+  width: 93%;
   margin-top: 40px;
   margin-left: 10px;
   border-radius: 5px;
   border: 4px solid #56CFE1;
-}
+
+  }
 
 body {
   background-color: rgba(234, 246, 250, 0.9);
-}
+  }
 
 .main{
   border: 4px solid #56CFE1;
   border-radius: 10px;
-  max-width: 800px;
+  max-width: 700px;
   margin: auto;
   margin-top: 10vh;
   padding: 2%;
   background-image: url(https://www.bypeople.com/wp-content/uploads/2014/05/light-live-background-css.jpg);
-}
+  }
 
 .offset:hover {
     box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
-}
+  }
 .btn:hover, .btn:focus {
     color: #fff;
     outline: 0;
-}
+  }
 .offset {
     border-color: #3498db;
     color: #fff;
     /* box-shadow: 0 0 40px 40px  #00B4D8 inset, 0 0 0 0  #00B4D8; */
     transition: all 150ms ease-in-out;
-}
+  }
 .btn {
     box-sizing: border-box;
     -webkit-appearance: none;
@@ -53,31 +57,35 @@ body {
     border-radius: 0.6em;
     color: #0a6f80;
     cursor: pointer;
-
     align-self: center;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1;
     margin: 20px;
-    /* padding: 1.2em 2.8em; */
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
-}
+  }
 
 .message:nth-child(even) {
   background-color: rgba(224, 224, 224, 0.86);
   padding: 2%;
   border-radius: 20px 20px 3px 20px;
-}
+  }
 
 .message:nth-child(odd) {
   background-color: #00B4D8;
   padding: 2%;
   border-radius: 20px 20px 3px 20px;
-}
+  }
+
+
+.messageContent{
+  display: flex;
+  justify-content: space-between;
+  }
 
 li{
   list-style: none;
@@ -92,27 +100,30 @@ ul{
   font-size: 15px;
   color: rgba(59, 69, 74, 1);
   opacity: 100px;
-
-
-}
+  }
 
 .time time{
   margin-left: 10px;
   font-size: 13px;
   padding-top: 3px;
-
-}
+  }
 
 .messageText{
   padding: 1px;
   font-size: 18px;
-}
+  display: flex;
+  }
 
-.settingButtons {
-  border-radius: 20px;
-}
+.settingButtons{
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 50px;
+  margin-left: 15px;
+  }
 
 .settingButtons:hover {
   background-color: #184E77;
   color: white;
-}
+  transform: scale(1.2);
+  }

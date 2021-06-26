@@ -112,7 +112,7 @@ class ChatList extends Component {
     }
 
           // <button className="btn" onClick={() => this.props.handleLogout()}>Logout</button>
-
+          // <button className="sendButton" type="submit">Send</button>
   render() {
 
       const messages = this.state.messages.map(message => (
@@ -126,7 +126,8 @@ class ChatList extends Component {
           <section className="submit">
             <form onSubmit={this.addMessage}>
               <input  autoComplete="off" className="text" type="text" name="text" value={this.state.text} onChange={this.handleInput}/>
-              <button className="sendButton" type="submit">Send Message</button>
+              <input className="sendButton" type="submit" value="send"/>
+
             </form>
           </section>
         </>

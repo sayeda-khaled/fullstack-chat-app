@@ -35,20 +35,23 @@ class MessageDetail extends Component {
         <p>{message.author}</p>
         <Moment format="hh:mm:ss">{message.time}</Moment>
         </div>
+        <div className="messageContent">
         {
           this.state.isEditing
           ? <input type="text" value={this.state.text} onChange={this.handleInput} name="text" autoComplete="off"/>
         : <p className="messageText">{message.text}</p>
         }
+        <div className ="settingButtons">
         {
-          message.is_owner && <button className ="settingButtons" type ='button' onClick={() => this.props.deleteMessage(message.id)}>delete</button>
+          message.is_owner && <div  onClick={() => this.props.deleteMessage(message.id)}>delete</div>
         }
         {
           this.state.isEditing
           ? <button className ="settingButtons" type ='button' onClick={this.saveMessage}>save</button>
-          : message.is_owner && <button type ='button' className ="settingButtons" onClick={() => this.setState({isEditing: true})}>edit</button>
+          : message.is_owner && <div  onClick={() => this.setState({isEditing: true})}>edit</div>
         }
-
+      </div>
+        </div>
       </li>
     );
   }
