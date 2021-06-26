@@ -25,6 +25,9 @@ class Registration extends Component {
 }
 
 
+
+
+
   render() {
     return (
 
@@ -45,8 +48,7 @@ class Registration extends Component {
           <label for="exampleInputPassword1">Confirm Password</label>
           <input type="password" class="form-control" name="password2" required onChange={this.handleInput} value={this.state.password2} id="exampleInputPassword1" placeholder="Password" />
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-      </form>
+      </form>      
     );
   }
 }

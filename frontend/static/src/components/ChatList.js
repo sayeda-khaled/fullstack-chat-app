@@ -18,24 +18,24 @@ class ChatList extends Component {
   }
 
   componentDidMount() {
-  this.displayMessages = setInterval(this.fetchMessages,
-  1000
-);
-}
+    this.displayMessages = setInterval(this.fetchMessages,
+    1000
+      );
+    }
 
-componentWillUnmount() {
-   clearInterval(this.displayMessages);
-}
+  componentWillUnmount() {
+     clearInterval(this.displayMessages);
+  }
 
   fetchMessages(){
     fetch('/api/v1/chats/')
     .then(response => response.json())
     .then(data => this.setState({ messages: data }));
-  }
+    }
 
   handleInput(event) {
-    this.setState({[event.target.name]: event.target.value});
-  }
+      this.setState({[event.target.name]: event.target.value});
+    }
 
   deleteMessage(id) {
     const options= {
@@ -107,28 +107,31 @@ componentWillUnmount() {
         const messages = [...this.state.messages];
         messages.push(data);
         this.setState({messages});
+        this.setState({ text: '' });
       });
     }
+
+          // <button className="btn" onClick={() => this.props.handleLogout()}>Logout</button>
 
   render() {
 
       const messages = this.state.messages.map(message => (
-        <MessageDetail key={message.id} message={message} deleteMessage={this.deleteMessage} editMessage={this.editMessage} owner={this.state.is_owner}/>
+        <MessageDetail key={message.id} message={message} deleteMessage={this.deleteMessage} editMessage={this.editMessage}/>
       ));
 
       return(
         <>
+          <button type="submit" class="btn btn-primary" onClick={() => this.props.handleLogout()}>Logout</button>
           <ul>{messages}</ul>
-
           <section className="submit">
             <form onSubmit={this.addMessage}>
-              <input  className="text" type="text" name="text" value={this.state.text} onChange={this.handleInput}/>
+              <input  autoComplete="off" className="text" type="text" name="text" value={this.state.text} onChange={this.handleInput}/>
               <button className="button" type="submit">Send Message</button>
             </form>
           </section>
         </>
       )
     }
-}
+  }
 
 export default ChatList;

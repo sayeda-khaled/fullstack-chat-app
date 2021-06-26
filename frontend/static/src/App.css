@@ -1,9 +1,8 @@
 .button{
   color:  red;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin-top: 20px;
-  border: 1px solid blue;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border: 4px solid #56CFE1;
   border-radius: 5px;
 
 }
@@ -11,22 +10,138 @@
 
 .text {
   height: 30px;
-  width: 500px;
+  width: 80%;
   margin-top: 40px;
   margin-left: 10px;
-  border: 1px solid blue;
   border-radius: 5px;
+  border: 4px solid #56CFE1;
 }
 
 body {
-  background-color: #EDDAD7;
+  background-color: white;
 }
 
 .main{
-  border: 1px solid blue;
+  border: 4px solid #56CFE1;
+  border-radius: 5px;
   max-width: 800px;
-  margin-left: 10%;
-  padding-left: 1%;
-  padding-right: 10%
-  /* background-image: url(https://cdn2.iconfinder.com/data/icons/zohanimasi-bundle-2/512/ICQ-512.png); */
+  margin: auto;
+  margin-top: 20vh;
+  padding: 2%;
+  /* background-color: rgba(184, 133, 122, 0.23); */
+  background-image: url(https://www.bypeople.com/wp-content/uploads/2014/05/light-live-background-css.jpg);
+}
+
+.offset:hover {
+    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+}
+.btn:hover, .btn:focus {
+    color: #fff;
+    outline: 0;
+}
+.offset {
+    border-color: #3498db;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+    transition: all 150ms ease-in-out;
+}
+.btn {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #e74c3c;
+    border-radius: 0.6em;
+    color: #e74c3c;
+    cursor: pointer;
+
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    /* padding: 1.2em 2.8em; */
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+}
+
+.message:nth-child(even) {
+  background-color: rgba(224, 224, 224, 0.86);
+  padding: 2%;
+  border-radius: 10px;
+}
+
+.message:nth-child(odd) {
+  background-color: #00B4D8;
+  padding: 2%;
+  border-radius: 10px;
+}
+
+li{
+  list-style: none;
+}
+
+ul{
+  padding: 0;
+}
+
+.time{
+  display: flex;
+  font-size: 15px;
+  color: rgba(59, 69, 74, 1);
+  opacity: 100px;
+
+}
+
+.time time{
+  margin-left: 10px;
+  font-size: 13px;
+  padding-top: 3px;
+
+}
+
+.messageText{
+  padding: 12px;
+  font-size: 18px;
+}
+
+.settingButtons:hover {
+    box-shadow: 0 0 10px 0 #4F6273 inset, 0 0 10px 4px #4F6273;
+}
+.btn:hover, .btn:focus {
+    color: ##3498db;
+    outline: 0;
+}
+.settingButtons {
+    border-color: ##3498db;
+    color: ##3498db;
+    box-shadow: 0 0 40px 40px ##4F6273 inset, 0 0 0 0 #4F6273;
+    transition: all 150ms ease-in-out;
+}
+.btn {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #e74c3c;
+    border-radius: 0.6em;
+    color: #e74c3c;
+    cursor: pointer;
+
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    /* padding: 1.2em 2.8em; */
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
 }

@@ -2,11 +2,14 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
+# class Room(models.Model):
+#     room = models.foreignKey(User, on_delete=models.CASCADE, null=True)
+
 class Chat(models.Model): # we are inheriting from the model we are inheriting the model from django..
     text = models.CharField(max_length=255)
     time = models.DateTimeField(auto_now_add=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-
+    # room=
 
 
 
