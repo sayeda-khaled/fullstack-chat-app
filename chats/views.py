@@ -24,10 +24,3 @@ class ChatDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ChatSerializer
 
     permission_classes = (IsAuthOrReadOnly,)
-
-
-
-
-
-
-# class MessageDetailAPIView(generics.RetrieveupdateDestroyAPIView);

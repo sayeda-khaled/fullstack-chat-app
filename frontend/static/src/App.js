@@ -2,7 +2,6 @@ import React from 'react';
 import ChatList from './components/ChatList.js';
 import Registration from './components/Registration.js';
 import Login from './components/Login.js';
-import Navbar from './components/Navbar';
 import Cookies from 'js-cookie';
 import './App.css';
 
@@ -16,6 +15,12 @@ class App extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.handleRegistration = this.handleRegistration.bind(this);
     this.handleSelection = this.handleSelection.bind(this);
+  }
+
+  async componentDidMount() {
+    const response = await fetch(`/rest-auth/user/`);
+    const json = await response.json();
+    console.log('user', json);
   }
 
 
@@ -38,7 +43,7 @@ class App extends React.Component {
         this.setState({ selection: 'chats' });
       }
     }
-      // console.log(data);
+
     async handleRegistration(user) {
 
       const options = {
@@ -52,14 +57,12 @@ class App extends React.Component {
       const handleError = (error) => console.warn(error);
       const response = await fetch('/rest-auth/registration/', options).catch(handleError);
 
-
       if(response.ok) {
         const data = await response.json().catch(handleError);
         Cookies.set('Authorization', `Token ${data.key}`);
         this.setState({ selection: 'chats' });
 
       }
-      // console.log(data);
     }
 
     async handleLogout(){
@@ -82,10 +85,8 @@ class App extends React.Component {
     async handleSelection(selection) {
       this.setState({selection});
     }
-        // <Navbar isAuth={this.state.selection === 'chats'} handleSelection={this.handleSelection} />
 
   render() {
-
     return(
       <>
         <section className="main">

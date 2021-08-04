@@ -2,16 +2,13 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-# class Room(models.Model):
-#     room = models.foreignKey(User, on_delete=models.CASCADE, null=True)
 
-class Chat(models.Model): # we are inheriting from the model we are inheriting the model from django..
+class Chat(models.Model):
     text = models.CharField(max_length=255)
     time = models.DateTimeField(auto_now_add=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    # room=
 
 
 
-    def __str__(self):   #This lists the title in the page now.. You don't have to make migration, but you would if you are changing your model, cos this is how the database is updated
+    def __str__(self):   
         return "%s %s" % (self.text, self.author)
